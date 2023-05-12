@@ -42,6 +42,5 @@ int do_perf_event(struct bpf_perf_event_data *ctx)
 
 bpf = BPF(text=bpf_text, debug=DEBUG_SOURCE)
 bytecode = bpf.dump_func("do_perf_event")
-f = open("stacks.ebpf", "w")
-f.write(bytecode)
-f.close()
+with open("stacks.ebpf", "w") as f:
+    f.write(bytecode)
